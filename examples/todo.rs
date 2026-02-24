@@ -7,7 +7,7 @@ use utoipa::{
     openapi::security::{ApiKey, ApiKeyValue, SecurityScheme},
 };
 use utoipa_axum::router::OpenApiRouter;
-use utoipa_scalar_warpper::{Scalar, Servable};
+use utoipa_scalar_warpper::Scalar;
 
 const TODO_TAG: &str = "todo";
 
@@ -17,7 +17,11 @@ async fn main() -> Result<(), Error> {
         .nest("/api/v1/todos", todo::router())
         .split_for_parts();
 
-    let router = router.merge(Scalar::with_url("/scalar", api));
+    let router = router.merge(
+        Scalar::new(api)
+            .with_url("/scalar")
+            .with_title("TodoOpenApi"),
+    );
 
     let address = SocketAddr::from((Ipv4Addr::LOCALHOST, 8080));
     let listener = TcpListener::bind(&address).await?;

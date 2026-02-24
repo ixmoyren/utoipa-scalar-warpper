@@ -18,39 +18,38 @@ impl Serialize for OpenApi {}
 
 impl Serialize for Value {}
 
-pub trait Servable<S>
-where
-    S: Serialize,
-{
-    fn with_url<U: Into<Cow<'static, str>>>(url: U, openapi: S) -> Self;
-}
-
 #[non_exhaustive]
 #[derive(Debug, Clone)]
 pub struct Scalar<S: Serialize> {
     url: Cow<'static, str>,
+    title: Cow<'static, str>,
     openapi: S,
     config: Config,
 }
 
-impl<S: Serialize> Servable<S> for Scalar<S> {
-    fn with_url<U: Into<Cow<'static, str>>>(url: U, openapi: S) -> Self {
+impl<S: Serialize> Scalar<S> {
+    pub fn new(openapi: S) -> Self {
         Self {
-            url: url.into(),
+            url: Cow::Borrowed("/"),
+            title: Cow::Borrowed("Scalar"),
             openapi,
             config: Config::default(),
         }
     }
-}
 
-impl<S: Serialize> Scalar<S> {
-    pub fn new(openapi: S, config: Config) -> Self {
-        Self {
-            url: Cow::Borrowed("/"),
-            openapi,
-            config,
-        }
+    pub fn with_url<U>(mut self, url: U) -> Self
+    where
+        U: Into<Cow<'static, str>>,
+    {
+        self.url = url.into();
+        self
     }
+
+    pub fn with_title(mut self, title: &'static str) -> Self {
+        self.title = Cow::Borrowed(title);
+        self
+    }
+
     pub fn with_config(mut self, config: Config) -> Self {
         self.config = config;
         self
@@ -66,13 +65,14 @@ impl<S: Serialize> Scalar<S> {
 
     fn markup(&self) -> Markup {
         let config = self.config_json();
+        let title = self.title.as_ref();
         let url = self.url.as_ref();
         let data_url = format!("{url}/{OPENAPI_JSON}");
         let script_src = format!("{url}/{SCALAR_SCRIPT}");
         html! {
             (DOCTYPE)
             head {
-                title { "Scalar" }
+                title { (title) }
                 meta charset="utf-8";
                 meta name="viewport" content="width=device-width, initial-scale=1.0";
             }
