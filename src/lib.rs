@@ -1,3 +1,4 @@
+#[cfg(feature = "axum")]
 mod axum;
 
 use maud::{DOCTYPE, Markup, html};
@@ -55,8 +56,16 @@ impl<S: Serialize> Scalar<S> {
         self
     }
 
-    fn to_markup(&self) -> Markup {
-        let config = serde_json::to_string(&self.config).unwrap();
+    fn config_json(&self) -> String {
+        serde_json::to_string(&self.config).unwrap()
+    }
+
+    fn api_json(&self) -> String {
+        serde_json::to_string(&self.openapi).unwrap()
+    }
+
+    fn markup(&self) -> Markup {
+        let config = self.config_json();
         let url = self.url.as_ref();
         let data_url = format!("{url}/{OPENAPI_JSON}");
         let script_src = format!("{url}/{SCALAR_SCRIPT}");

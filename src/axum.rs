@@ -9,8 +9,8 @@ where
     R: Clone + Send + Sync + 'static,
 {
     fn from(scalar: Scalar<S>) -> Router<R> {
-        let markup = scalar.to_markup();
-        let api_json = serde_json::to_string(&scalar.openapi).unwrap();
+        let markup = scalar.markup();
+        let api_json = scalar.api_json();
         let scalar_url = scalar.url.as_ref();
         Router::<R>::new()
             .route(
