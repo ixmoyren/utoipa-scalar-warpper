@@ -1,0 +1,14 @@
+[package]
+name = "todo-axum"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+axum = { workspace = true, default-features = true }
+http = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { version = "1.49.0", features = ["full"] }
+utoipa = { workspace = true }
+utoipa-axum = { version = "0.2.0" }
+utoipa-scalar-warpper = { workspace = true, features = ["axum"] }

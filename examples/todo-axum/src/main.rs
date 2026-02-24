@@ -1,6 +1,5 @@
-use std::net::{Ipv4Addr, SocketAddr};
-
 use std::io::Error;
+use std::net::{Ipv4Addr, SocketAddr};
 use tokio::net::TcpListener;
 use utoipa::{
     Modify, OpenApi,

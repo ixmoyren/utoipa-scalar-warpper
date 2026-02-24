@@ -1,13 +1,23 @@
 [workspace]
 resolver = "3"
+members = ["examples/todo-axum"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
 
 [workspace.dependencies]
+axum = { version = "0.8", default-features = false }
+http = { version = "1" }
+serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.149", features = ["std"] }
+utoipa = { version = "5.4.0" }
+utoipa-scalar-warpper = { version = "0.1.0", path = "", default-features = false }
 
 [package]
 name = "utoipa-scalar-warpper"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
 license = "APACHE OR MIT"
 
 [features]
@@ -15,18 +25,12 @@ default = []
 axum = ["dep:axum", "http", "maud/axum", "utoipa/axum_extras"]
 
 [dependencies]
-axum = { version = "0.8", default-features = false, optional = true }
-http = { version = "1", optional = true }
+axum = { workspace = true, optional = true }
+http = { workspace = true, optional = true }
 maud = { version = "0.27" }
-serde = { version = "1.0.228", features = ["derive"] }
+serde = { workspace = true }
 serde_json = { workspace = true }
-utoipa = { version = "5.4.0" }
-
-[dev-dependencies]
-axum = { version = "0.8" }
-tokio = { version = "1.49.0", features = ["full"] }
-utoipa-axum = { version = "0.2.0" }
-utoipa-scalar-warpper = { version = "0.1.0", path = ".", features = ["axum"] }
+utoipa = { workspace = true }
 
 [build-dependencies]
 serde_json = { workspace = true }
