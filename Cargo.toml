@@ -1,0 +1,26 @@
+[workspace]
+resolver = "3"
+
+[workspace.dependencies]
+serde_json = { version = "1.0.149", features = ["std"] }
+
+[package]
+name = "utoipa-scalar-warpper"
+version = "0.1.0"
+edition = "2024"
+license = "APACHE OR MIT"
+
+[dependencies]
+axum = "0.8"
+http = "1"
+maud = { version = "0.27", features = ["axum"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = { workspace = true }
+utoipa = { version = "5.4.0", features = ["axum_extras"] }
+
+[dev-dependencies]
+tokio = { version = "1.49.0", features = ["full"] }
+utoipa-axum = { version = "0.2.0" }
+
+[build-dependencies]
+serde_json = { workspace = true }
