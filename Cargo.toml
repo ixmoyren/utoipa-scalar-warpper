@@ -24,6 +24,7 @@ license = "MIT OR Apache-2.0"
 description = "Scalar for utoipa"
 keywords = ["scalar", "openapi", "documentation", "utoipa", "maud"]
 repository = "https://github.com/ixmoyren/utoipa-scalar-warpper"
+exclude = ["node_modules", "examples", "static"]
 
 [features]
 default = []
