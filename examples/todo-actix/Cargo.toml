@@ -1,0 +1,14 @@
+[package]
+name = "todo-actix"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+actix-web = { workspace = true, default-features = true }
+env_logger = "0.11"
+futures = "0.3.32"
+log = "0.4"
+serde = { workspace = true }
+utoipa = { workspace = true }
+utoipa-actix-web = { version = "0.1.2" }
+utoipa-scalar-warpper = { workspace = true, features = ["actix-web"] }

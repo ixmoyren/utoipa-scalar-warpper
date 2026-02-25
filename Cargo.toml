@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["examples/todo-axum"]
+members = ["examples/todo-actix", "examples/todo-axum"]
 
 [workspace.package]
 version = "0.1.0"
@@ -12,7 +12,7 @@ axum = { version = "0.8", default-features = false }
 http = { version = "1" }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.149", features = ["std"] }
-utoipa = { version = "5.4.0" }
+utoipa = { version = "5.4.0", default-features = false }
 utoipa-scalar-warpper = { version = "0.1.0", path = "", default-features = false }
 
 [package]
@@ -33,7 +33,9 @@ http = { workspace = true, optional = true }
 maud = { version = "0.27" }
 serde = { workspace = true }
 serde_json = { workspace = true }
-utoipa = { workspace = true }
+utoipa = { workspace = true, features = [
+    "macros",
+] }
 
 [build-dependencies]
 serde_json = { workspace = true }
