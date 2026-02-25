@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["examples/todo-actix", "examples/todo-axum", "examples/todo-rocket"]
+members = ["examples/todo-actix", "examples/todo-axum", "examples/todo-rocket", "xtask"]
 
 [workspace.package]
 version = "0.1.0"
@@ -24,7 +24,7 @@ license = "MIT OR Apache-2.0"
 description = "Scalar for utoipa"
 keywords = ["scalar", "openapi", "documentation", "utoipa", "maud"]
 repository = "https://github.com/ixmoyren/utoipa-scalar-warpper"
-exclude = ["node_modules", "examples", "static"]
+exclude = ["examples/*", "xtask"]
 
 [features]
 default = []

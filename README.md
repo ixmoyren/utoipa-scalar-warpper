@@ -179,7 +179,8 @@ cargo run --bin todo-rocket --features rocket
 
 ## Build System
 
-This project uses build.rs to automatically download and compress Scalar frontend resources:
+This project uses xtask to automatically download and compress Scalar front-end resources, and needs to install `nodejs`
+and `pnpm` in advance with the command `cargo xtask upgrade-scalar-api-reference`.
 
 1. Check if the static directory exists
 2. If not, install the latest Scalar API reference library

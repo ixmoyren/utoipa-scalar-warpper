@@ -24,6 +24,3 @@ Cargo.lock
 
 # NPM
 node_modules
-
-# Scalar static files
-static/

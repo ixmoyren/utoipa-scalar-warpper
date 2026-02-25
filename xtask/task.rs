@@ -1,12 +1,8 @@
-use std::{
-    fs::File,
-    io::BufReader,
-    process::{Command, Output},
-};
+use std::fs::File;
+use std::io::BufReader;
+use std::process::{Command, Output};
 
-fn main() {
-    // Listen for files that may change and rebuild when the files change
-    println!("cargo:rerun-if-changed=build.rs");
+pub fn upgrade_scalar_api_reference() {
     // If the directory where the static file is located does not exist, install it directly
     let static_dir = std::env::current_dir()
         .expect("Failed to get the current directory")
