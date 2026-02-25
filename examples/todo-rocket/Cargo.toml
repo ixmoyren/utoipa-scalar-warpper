@@ -1,0 +1,12 @@
+[package]
+name = "todo-rocket"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+rocket = { version = "0.5", default-features = true, features = ["json"] }
+utoipa = { workspace = true }
+utoipa-scalar-warpper = { workspace = true, features = ["rocket"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+log = "0.4"

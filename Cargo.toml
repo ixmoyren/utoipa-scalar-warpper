@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["examples/todo-actix", "examples/todo-axum"]
+members = ["examples/todo-actix", "examples/todo-axum", "examples/todo-rocket"]
 
 [workspace.package]
 version = "0.1.0"
@@ -10,6 +10,7 @@ edition = "2024"
 actix-web = { version = "4.13.0", default-features = false }
 axum = { version = "0.8", default-features = false }
 http = { version = "1" }
+rocket = { version = "0.5", default-features = false }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.149", features = ["std"] }
 utoipa = { version = "5.4.0", default-features = false }
@@ -32,7 +33,7 @@ actix-web = { workspace = true, optional = true }
 axum = { workspace = true, optional = true }
 http = { workspace = true, optional = true }
 maud = { version = "0.27" }
-rocket = { version = "0.5", features = ["json"], optional = true }
+rocket = { workspace = true, optional = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 utoipa = { workspace = true, features = [
