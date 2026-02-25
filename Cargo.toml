@@ -7,6 +7,7 @@ version = "0.1.0"
 edition = "2024"
 
 [workspace.dependencies]
+actix-web = { version = "4.13.0" }
 axum = { version = "0.8", default-features = false }
 http = { version = "1" }
 serde = { version = "1.0.228", features = ["derive"] }
@@ -22,9 +23,11 @@ license = "APACHE OR MIT"
 
 [features]
 default = []
+actix-web = ["dep:actix-web", "maud/actix-web", "utoipa/actix_extras"]
 axum = ["dep:axum", "http", "maud/axum", "utoipa/axum_extras"]
 
 [dependencies]
+actix-web = { workspace = true, optional = true }
 axum = { workspace = true, optional = true }
 http = { workspace = true, optional = true }
 maud = { version = "0.27" }

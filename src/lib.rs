@@ -1,3 +1,6 @@
+#[cfg(feature = "actix-web")]
+mod actix;
+
 #[cfg(feature = "axum")]
 mod axum;
 
@@ -7,10 +10,10 @@ use serde_json::Value;
 use std::borrow::Cow;
 use utoipa::openapi::OpenApi;
 
-pub(crate) const SCALAR_API_REFERENCE_JS: &str = include_str!("../static/scalar-api-reference.js");
+const SCALAR_API_REFERENCE_JS: &str = include_str!("../static/scalar-api-reference.js");
 
-pub(crate) const SCALAR_SCRIPT: &str = "scalar-api-reference.js";
-pub(crate) const OPENAPI_JSON: &str = "api-docs/openapi.json";
+const SCALAR_SCRIPT: &str = "scalar-api-reference.js";
+const OPENAPI_JSON: &str = "api-docs/openapi.json";
 
 pub trait Serialize: SerdeSerialize {}
 
@@ -59,8 +62,18 @@ impl<S: Serialize> Scalar<S> {
         serde_json::to_string(&self.config).unwrap()
     }
 
+    fn script_url(&self) -> String {
+        let url = self.url.as_ref();
+        format!("{url}/{SCALAR_SCRIPT}")
+    }
+
     fn api_json(&self) -> String {
         serde_json::to_string(&self.openapi).unwrap()
+    }
+
+    fn api_json_url(&self) -> String {
+        let url = self.url.as_ref();
+        format!("{url}/{OPENAPI_JSON}")
     }
 
     fn markup(&self) -> Markup {
