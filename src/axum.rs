@@ -31,7 +31,13 @@ where
             )
             .route(
                 api_json_url.as_str(),
-                routing::get(move || async { api_json.into_response() }),
+                routing::get(move || async {
+                    let headers = [(
+                        header::CONTENT_TYPE,
+                        HeaderValue::from_static("application/json"),
+                    )];
+                    (headers, api_json).into_response()
+                }),
             )
     }
 }
