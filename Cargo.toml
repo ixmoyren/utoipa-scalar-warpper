@@ -20,7 +20,10 @@ utoipa-scalar-warpper = { version = "0.1.0", path = "", default-features = false
 name = "utoipa-scalar-warpper"
 version.workspace = true
 edition.workspace = true
-license = "APACHE OR MIT"
+license = "MIT OR Apache-2.0"
+description = "Scalar for utoipa"
+keywords = ["scalar", "openapi", "documentation", "utoipa", "maud"]
+repository = "https://github.com/ixmoyren/utoipa-scalar-warpper"
 
 [features]
 default = []
