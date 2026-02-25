@@ -8,6 +8,6 @@ axum = { workspace = true, default-features = true }
 http = { workspace = true }
 serde = { workspace = true }
 tokio = { version = "1.49.0", features = ["full"] }
-utoipa = { workspace = true }
+utoipa = { workspace = true, default-features = true, features = ["axum_extras"] }
 utoipa-axum = { version = "0.2.0" }
 utoipa-scalar-warpper = { workspace = true, features = ["axum"] }

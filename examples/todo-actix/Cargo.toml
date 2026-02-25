@@ -9,6 +9,6 @@ env_logger = "0.11"
 futures = "0.3.32"
 log = "0.4"
 serde = { workspace = true }
-utoipa = { workspace = true }
+utoipa = { workspace = true, default-features = true, features = ["actix_extras"] }
 utoipa-actix-web = { version = "0.1.2" }
 utoipa-scalar-warpper = { workspace = true, features = ["actix-web"] }

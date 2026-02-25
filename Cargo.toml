@@ -24,9 +24,9 @@ license = "APACHE OR MIT"
 
 [features]
 default = []
-actix-web = ["dep:actix-web", "maud/actix-web", "utoipa/actix_extras"]
-axum = ["dep:axum", "http", "maud/axum", "utoipa/axum_extras"]
-rocket = ["dep:rocket", "maud/rocket", "utoipa/rocket_extras"]
+actix-web = ["dep:actix-web"]
+axum = ["dep:axum", "http"]
+rocket = ["dep:rocket"]
 
 [dependencies]
 actix-web = { workspace = true, optional = true }
@@ -36,9 +36,7 @@ maud = { version = "0.27" }
 rocket = { workspace = true, optional = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
-utoipa = { workspace = true, features = [
-    "macros",
-] }
+utoipa = { workspace = true, features = ["macros"] }
 
 [build-dependencies]
 serde_json = { workspace = true }

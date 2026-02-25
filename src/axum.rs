@@ -17,7 +17,13 @@ where
         Router::<R>::new()
             .route(
                 scalar_url,
-                routing::get(move || async { markup.into_response() }),
+                routing::get(move || async {
+                    let headers = [(
+                        header::CONTENT_TYPE,
+                        HeaderValue::from_static("text/html; charset=utf-8"),
+                    )];
+                    (headers, markup.0).into_response()
+                }),
             )
             .route(
                 script_url.as_str(),
