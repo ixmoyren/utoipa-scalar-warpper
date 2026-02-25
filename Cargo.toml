@@ -3,7 +3,7 @@ resolver = "3"
 members = ["examples/todo-actix", "examples/todo-axum", "examples/todo-rocket", "xtask"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [workspace.dependencies]
@@ -14,7 +14,7 @@ rocket = { version = "0.5", default-features = false }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.149", features = ["std"] }
 utoipa = { version = "5.4.0", default-features = false }
-utoipa-scalar-warpper = { version = "0.1.0", path = "", default-features = false }
+utoipa-scalar-warpper = { version = "0.2.0", path = ".", default-features = false }
 
 [package]
 name = "utoipa-scalar-warpper"
