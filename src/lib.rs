@@ -4,6 +4,9 @@ mod actix;
 #[cfg(feature = "axum")]
 mod axum;
 
+#[cfg(feature = "rocket")]
+mod rocket;
+
 use maud::{DOCTYPE, Markup, html};
 use serde::Serialize as SerdeSerialize;
 use serde_json::Value;
