@@ -177,9 +177,9 @@ cd examples/todo-rocket
 cargo run --bin todo-rocket --features rocket
 ```
 
-## Build System
+## Build
 
-This project uses xtask to automatically download and compress Scalar front-end resources, and needs to install `nodejs`
+This project uses xtask to automatically download and compress Scalar front-end resources, and needs to install `node.js`
 and `pnpm` in advance with the command `cargo xtask upgrade-scalar-api-reference`.
 
 1. Check if the static directory exists

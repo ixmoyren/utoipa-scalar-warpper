@@ -176,10 +176,9 @@ cd examples/todo-rocket
 cargo run --bin todo-rocket --features rocket
 ```
 
-## 构建系统
+## 构建
 
-本项目使用 xtask 来自动下载和压缩 Scalar 前端资源，需要提前安装 `nodejs` 和 `pnpm`，命令
-`cargo xtask upgrade-scalar-api-reference`。
+本项目使用 xtask 来自动下载和压缩 Scalar 的相关资源，需要提前安装 `node.js` 和 `pnpm`，而后执行命令 `cargo xtask upgrade-scalar-api-reference`。
 
 1. 检查静态目录是否存在
 2. 如果不存在，则安装最新的 Scalar API 引用库
